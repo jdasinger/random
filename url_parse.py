@@ -1,36 +1,30 @@
+from urlparse import *
 from urllib import urlencode
-from urlparse import parse_qs, urlsplit, urlunsplit
+
 import sys
-import requests
-import random
 
-# def set_query_parameter(url, param_name, param_value):
-#     scheme, netloc, path, query_string, fragment = urlsplit(url)
-#     query_params = parse_qs(query_string)
-#     query_params[param_name] = [param_value]
-#     new_query_string = urlencode(query_params, doseq=True)
-#     return urlunsplit((scheme, netloc, path, new_query_string, fragment))
+#url = sys.argv[1]
+url = 'http://hackeducate.com/admin?user=1&password=2'
 
-# print set_query_parameter(sys.argv[1],sys.argv[2], sys.argv[3])
+def parse_test(url):
+	scheme, netloc, path, query_string, fragment = urlsplit(url)
+	query_params = parse_qs(query_string)
+#	print query_params
+	# outputs query params as dict like {'password': ['2'], 'user': ['1']}
+	
+	#for each key:value replace value with format string like {user} {password} or {var1} {var2} etc.
+	for key,value in query_params.items():
+		query_params[key] = "{thing}"
+	print query_params
 
-with open ("wordlist.txt", "r") as payload_file:
-	payload = payload_file.read().split("\n")
 
 
-## using .format()
-def my_url_fxn(un, pw):
-	my_url = "https://www.url.com/username={username}&password={password}".format(username=un, password=pw)
-	return my_url
+	print urlunsplit((scheme, netloc, path, query_string, fragment))
 
-i = 0
-while i < 10:
-	payload1 = random.choice(payload)
-	payload2 = random.choice(payload)
-	url = my_url_fxn(payload1, payload2)
-	i += 1
-	print url
-# for arguments in list_of_params: 
-# 	# list_of_params is list of lists of un, pw, like [['username','password']]
-# 	url = my_url_fxn(arguments[0], arguments[1])
-# 	#use request to fetch that url 
-# 	requests.get(url)
+parse_test(url)
+
+
+
+	# parsed = urlparse(url)
+	# # outputs query params as dict like {'password': ['2'], 'user': ['1']}
+	# params = parse_qs(parsed.query)
