@@ -8,7 +8,7 @@ import random
 
 input_file = sys.argv[1] #this is a text file with your attack payload
 num = sys.argv[2] #this is the number of requests you want to make to the target url
-
+url = 'http://hackeducate.com/admin?user=1&password=2'
 
 ## using .format()
 def my_url_fxn(un, pw):
