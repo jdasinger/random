@@ -28,8 +28,3 @@ while i < int(num):
 	print req
 #	print req.text
 	i += 1
-# for arguments in list_of_params: 
-# 	# list_of_params is list of lists of un, pw, like [['username','password']]
-# 	url = my_url_fxn(arguments[0], arguments[1])
-# 	#use request to fetch that url 
-# 	requests.get(url)
