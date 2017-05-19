@@ -26,5 +26,4 @@ while i < int(num):
 	print url
 	req = requests.get(url)
 	print req
-#	print req.text
 	i += 1
